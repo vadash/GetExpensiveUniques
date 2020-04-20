@@ -17,7 +17,7 @@ namespace GetExpensiveUniques
             @"https://poe.ninja/api/data/itemoverview?league=Delirium&type=UniqueAccessory&language=en",
         };
 
-        private const int cutoff = 10;
+        private const float cutoff = 10f;
         
         public static void Main(string[] args)
         {
@@ -37,7 +37,7 @@ namespace GetExpensiveUniques
                             continue;
                         }
                         
-                        if (int.TryParse((string)line?["chaosValue"], out var chaosValue) &&
+                        if (float.TryParse((string)line?["chaosValue"], out var chaosValue) &&
                             chaosValue >= cutoff)
                         {
                             result += "\"" + (string)line?["name"] + "\"," + Environment.NewLine;
